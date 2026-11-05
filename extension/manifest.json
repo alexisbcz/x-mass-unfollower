@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Unfollow Non-Followers for X",
+  "short_name": "XUnfollow",
+  "version": "1.0.0",
+  "description": "Open-source: find and unfollow X (Twitter) accounts that don't follow you back. Uses X's own web API — no DOM scraping, no servers.",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "action": {
+    "default_title": "Unfollow non-followers",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "src/api.js",
+        "src/ui.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    }
+  ],
+  "homepage_url": "https://github.com/alexisbcz/x-mass-unfollower"
+}

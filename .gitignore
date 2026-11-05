@@ -1,0 +1,19 @@
+# Dependencies and builds
+node_modules/
+dist/
+*.zip
+
+# Secrets and captures
+.env
+.env.*
+*.har
+*.pem
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.log
+*.tsbuildinfo
